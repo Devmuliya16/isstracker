@@ -1,46 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="iss.png"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clock-Digi</title>
-    <link rel="stylesheet" href="watch.css">
+
+    
+          
+            
+    
+
+          
+          
+            
+    
+
+          
+    
+    @@ -75,4 +76,4 @@
+  
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
+    <title>iss tracker</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        #map {
+            height: 100vh;
+            width: 100vw;
+        }
+        .marker {
+            display: block;
+            cursor: pointer;
+            padding: 0;
+            width: 50px;
+            height: 50px;
+            background-repeat: no-repeat;
+        }
+        .container  {
+            background-color: rgba(255, 255, 255, 0.26);
+            font-size: 10px;
+            position: absolute;
+            width: fit-content;
+            border-radius: 5px;
+            padding: 5px;
+            top: 0px;
+            left: 2px;
+            z-index: 5;
+        }
+       
+        .mapboxgl-ctrl-bottom-left,
+        .mapboxgl-ctrl-bottom-right {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="super-container">
-        <div class="c1"></div>
-        <div class="c2"></div>
-        <div class="c3"></div>
-        <div class="container">
-            <div class="dial">
-                <div>
-                    <span class="h12">12</span>
-                    <span class="h3">3</span>
-                    <span class="h6">6</span>
-                    <span class="h9">9</span>
-                </div>
-                <div class="spoke-container">
-                    
-                </div>
-                <div class="arrows">
-                    <div class="hr"></div>
-                    <div class="min"></div>
-                    <div class="sec"></div>
-                    <div class="dot"></div>
-                </div>
-                <div class="daydate">
-                    <div class="date">
-                        
-                    </div>
-                    <div class="day">
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div id='map'></div>
+    <div class="container">
+        <div id="time">time</div>
+        <div id="velocity">velocity</div>
+        <div id="demo">this is your location</div>
     </div>
 </body>
-<script src="/javascript/watch project/watch.js"></script>
+<script src="./index.js"></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZGV2LXdlYiIsImEiOiJjbDNiZzMzdDQwYXIwM2RwbW1leXBoMzl3In0.YHy5UhctEPGoTfK4TzmRSA';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        zoom: 1.5,
+    });
+    setInterval(call, 1000);
+    function call() {
+        time = new Date();
+        document.getElementById('time').innerHTML = time;
+    }
+    
+
+</script>
+
 </html>
