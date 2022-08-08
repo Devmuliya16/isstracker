@@ -22,7 +22,7 @@ function callback(){
     const api_url = "https://api.wheretheiss.at/v1/satellites/25544";
     getiss(api_url);
 }
-setInterval(callback,100);
+setInterval(callback,1000);
 
 
 
