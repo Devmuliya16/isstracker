@@ -8,9 +8,8 @@ el.style.backgroundSize = '100%';
 async function getiss(url) {
     const response = await fetch(url);
     var data = await response.json();
-    //this can be done through XML which is learned in javascript sections
     
-    document.getElementById('velocity').innerHTML= `velocity = ${data.velocity}`;
+    document.getElementById('velocity').innerHTML= `velocity = ${data.velocity}kmph`;
 
     
     new mapboxgl.Marker(el)
@@ -35,11 +34,11 @@ function getLocation() {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
-getLocation();
+
 function showPosition(position) {
     x.innerHTML = "your location <br>long: "+position.coords.longitude+"lat: "+position.coords.latitude;
     new mapboxgl.Marker()
     .setLngLat([position.coords.longitude,position.coords.latitude])
     .addTo(map);
 }
-
+getLocation();
